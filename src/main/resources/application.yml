@@ -14,4 +14,4 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          issuer-uri: https://sts.windows.net/9107b728-2166-4e5d-8d13-d1ffdf0351ef/
+          issuer-uri:  add your URL
