@@ -15,6 +15,8 @@
  */
 package com.cvc.test;
 
+import org.springframework.context.annotation.Bean;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -26,10 +28,16 @@ public class ResourceServerConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		System.out.println("I am in the WebSecurityConfigurerAdapter::configure ");
-//		http.authorizeRequests().antMatchers("/test").permitAll();
-				http.oauth2ResourceServer()
+		http.authorizeRequests().antMatchers("/test").permitAll().and().
+				 oauth2ResourceServer()
 				.jwt();
 
 	}
 	// @formatter:on
+
+	@Bean
+	@Override
+	public AuthenticationManager authenticationManagerBean() throws Exception {
+		return super.authenticationManagerBean();
+	}
 }
